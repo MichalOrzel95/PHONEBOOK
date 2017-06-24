@@ -11,7 +11,9 @@
 //Main function
 int main(void)
 {
+    int option_number;
     ShowEntrance();
+    option_number=ChooseOption();
 
     return 0;
 }//End of main

@@ -7,5 +7,6 @@
 
 //Functions' prototypes
 void ShowEntrance(void);
+int ChooseOption(void);
 
 #endif //HANDLING_FILES_SUPPLEMENT_H
