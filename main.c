@@ -11,10 +11,19 @@
 //Main function
 int main(void)
 {
+    FILE *phonebook;
     char option_number;
     ShowEntrance();
-    option_number=ChooseOption();
-    DoSelected(option_number);
+    if((phonebook=fopen("phonebook.txt","a+"))!=NULL)
+    {
+        option_number=ChooseOption();
+        DoSelected(option_number,phonebook);
+    }
+    else
+    {
+        printf("There is a problem with file!\n");
+    }
+
 
     return 0;
 }//End of main

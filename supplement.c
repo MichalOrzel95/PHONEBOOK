@@ -38,13 +38,13 @@ char ChooseOption(void)
 }
 
 //Switch function
-void DoSelected(int number)
+void DoSelected(char number,FILE *file)
 {
     switch(number)
     {
         case '1':
         {
-
+            ShowAll(file);
         }break;
         case '2':
         {
@@ -66,6 +66,16 @@ void DoSelected(int number)
         {
 
         }break;
+    }
+}
+
+//Showing all contacts in phonebook
+void ShowAll(FILE *file)
+{
+    char verse[80];
+    while((fgets(verse,80,file))!=NULL)
+    {
+        printf("%s",verse);
     }
 }
 

@@ -8,6 +8,7 @@
 //Functions' prototypes
 void ShowEntrance(void);
 char ChooseOption(void);
-void DoSelected(int number);
+void DoSelected(char number,FILE *file);
+void ShowAll(FILE *file);
 
 #endif //HANDLING_FILES_SUPPLEMENT_H
