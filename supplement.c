@@ -5,7 +5,6 @@
 //Include files
 #include <stdio.h>
 #include <ctype.h>
-#include <stdbool.h>
 #include "supplement.h"
 
 //Functions' definitions
@@ -28,18 +27,12 @@ void ShowEntrance(void)
 int ChooseOption(void)
 {
     char number;
-    bool flag;
     do
     {
-        flag=false;
-        printf("Move to an option by entering a particular number: ");
+        printf("Move to an option by entering a particular number[1-5]: ");
         scanf("%c",&number);
         fseek(stdin,0,SEEK_END);
-        if(isdigit(number))
-        {
-            flag=true;
-        }
-    }while(flag==false);
+    }while(!(isdigit(number)) || number=='0');
 
     return number;
 }
