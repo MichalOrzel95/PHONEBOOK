@@ -11,9 +11,10 @@
 //Main function
 int main(void)
 {
-    int option_number;
+    char option_number;
     ShowEntrance();
     option_number=ChooseOption();
+    DoSelected(option_number);
 
     return 0;
 }//End of main

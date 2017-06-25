@@ -24,7 +24,7 @@ void ShowEntrance(void)
 }
 
 //Choosing an option from menu
-int ChooseOption(void)
+char ChooseOption(void)
 {
     char number;
     do
@@ -35,5 +35,37 @@ int ChooseOption(void)
     }while(!(isdigit(number)) || number=='0');
 
     return number;
+}
+
+//Switch function
+void DoSelected(int number)
+{
+    switch(number)
+    {
+        case '1':
+        {
+
+        }break;
+        case '2':
+        {
+
+        }break;
+        case '3':
+        {
+
+        }break;
+        case '4':
+        {
+
+        }break;
+        case '5':
+        {
+
+        }break;
+        default:
+        {
+
+        }break;
+    }
 }
 
