@@ -32,7 +32,7 @@ char ChooseOption(void)
         printf("Move to an option by entering a particular number[1-5]: ");
         scanf("%c",&number);
         fseek(stdin,0,SEEK_END);
-    }while(!(isdigit(number)) || number=='0');
+    }while(!(isdigit(number)) || (number=='0' || number>'5'));
 
     return number;
 }
@@ -73,9 +73,11 @@ void DoSelected(char number,FILE *file)
 void ShowAll(FILE *file)
 {
     char verse[80];
+    printf("FORNAME\t\tSURNAME\t\tNUMBER\n");
+    printf("-------\t\t-------\t\t------\n");
     while((fgets(verse,80,file))!=NULL)
     {
-        printf("%s",verse);
+        printf("%20s",verse);
     }
 }
 

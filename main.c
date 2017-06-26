@@ -24,6 +24,9 @@ int main(void)
         printf("There is a problem with file!\n");
     }
 
+    //Wait untill user press a key
+    printf("\nPress any key to end: ");
+    getchar();
 
     return 0;
 }//End of main
