@@ -49,7 +49,7 @@ void DoSelected(char number,FILE *file)
         }break;
         case '2':
         {
-
+            AddContact(file);
         }break;
         case '3':
         {

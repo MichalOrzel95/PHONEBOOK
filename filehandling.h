@@ -6,5 +6,6 @@
 #define PHONEBOOK_FILEHANDLING_H
 
 void ShowAll(FILE *file);
+void AddContact(FILE *file);
 
 #endif //PHONEBOOK_FILEHANDLING_H
