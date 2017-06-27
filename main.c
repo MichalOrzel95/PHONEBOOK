@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "supplement.h"
+#include "filehandling.h"
 
 //Main function
 int main(void)

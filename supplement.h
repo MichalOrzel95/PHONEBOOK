@@ -9,6 +9,5 @@
 void ShowEntrance(void);
 char ChooseOption(void);
 void DoSelected(char number,FILE *file);
-void ShowAll(FILE *file);
 
 #endif //HANDLING_FILES_SUPPLEMENT_H

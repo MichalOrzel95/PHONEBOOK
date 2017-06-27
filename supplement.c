@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include "supplement.h"
+#include "filehandling.h"
 
 //Functions' definitions
 //Showing the MENU of phonebook
@@ -66,18 +67,6 @@ void DoSelected(char number,FILE *file)
         {
 
         }break;
-    }
-}
-
-//Showing all contacts in phonebook
-void ShowAll(FILE *file)
-{
-    char verse[80];
-    printf("FORNAME\t\tSURNAME\t\tNUMBER\n");
-    printf("-------\t\t-------\t\t------\n");
-    while((fgets(verse,80,file))!=NULL)
-    {
-        printf("%20s",verse);
     }
 }
 
