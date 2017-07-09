@@ -7,5 +7,6 @@ set(SOURCE_FILES
         main.c
         supplement.c
         supplement.h
-        filehandling.c filehandling.h)
+        filehandling.c
+        filehandling.h)
 add_executable(PHONEBOOK ${SOURCE_FILES})

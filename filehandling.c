@@ -6,12 +6,13 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include "filehandling.h"
+#include "supplement.h"
 
 //Showing all contacts in phonebook
 void ShowAll(FILE *file)
 {
     char verse[80];
-    printf("FORNAME,SURNAME,NUMBER\n");
+    printf("FORENAME,SURNAME,NUMBER\n");
     printf("******************************************\n");
     while((fgets(verse,80,file))!=NULL)
     {
@@ -22,7 +23,7 @@ void ShowAll(FILE *file)
 //Adding new person to phonebook
 void AddContact(FILE *file)
 {
-    char forname[30];
+    char forename[30];
     char surname[30];
     int phonemuber;
     char number;
@@ -38,14 +39,48 @@ void AddContact(FILE *file)
     for (int i = atoi(&number); i >0; --i)
     {
         printf("Enter the forname: ");
-        scanf("%s",forname);
+        scanf("%s",forename);
         printf("Enter the surname: ");
         scanf("%s",surname);
-        printf("Enter the phonenumber: ");
-        scanf("%i",&phonemuber);
-        fseek(stdin,0,SEEK_END);
+        do
+        {
+            printf("Enter the phonenumber: ");
+            scanf("%i", &phonemuber);
+            fseek(stdin, 0, SEEK_END);
+        }while(phonemuber<100000000);
 
-        fprintf(file,"\n%s,%s,%i",forname,surname,phonemuber);
+        fprintf(file,"\n%s,%s,%i",forename,surname,phonemuber);
+    }
+}
+
+//Removing person from the phonebook
+void RemovePerson(FILE *file)
+{
+    char buffer[50];
+    char person[50];
+
+    FILE *newfile;
+
+    if((newfile=fopen("/home/orzelm/PROGRAMMING/PHONEBOOK/newfile.txt","a+"))==NULL)
+    {
+        printf("Problem with removing!\n");
+        printf("Closing...");
+        exit(EXIT_FAILURE);
     }
 
+    printf("Enter forename,surname: ");
+    scanf("%s",person);
+
+    //Searching for a person in the phonebook
+    while((fgets(buffer,50,file))!=NULL)
+    {
+        if((CompareStrings(person,buffer))!=0)
+        {
+            fprintf(newfile,"%s",buffer);
+        }
+    }
+
+    rename("/home/orzelm/PROGRAMMING/PHONEBOOK/phonebook.txt","/home/orzelm/PROGRAMMING/PHONEBOOK/temp.txt");
+    rename("/home/orzelm/PROGRAMMING/PHONEBOOK/newfile.txt","/home/orzelm/PROGRAMMING/PHONEBOOK/phonebook.txt");
+    remove("/home/orzelm/PROGRAMMING/PHONEBOOK/temp.txt");
 }
