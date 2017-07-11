@@ -26,11 +26,13 @@ int main(void)
 
     do
     {
+        CLEAR_SCREEN;
+        CURSOR_HOME;
         //Set file to beginning
         fseek(phonebook,0,SEEK_SET);
         ShowEntrance();
         DoSelected(phonebook,ChooseOption());
-        printf("Press r/R to return to menu or other key to exit: ");
+        printf("Press [r/R] to return to menu or other key to exit: ");
         scanf(" %c",&sign);
     }while(sign=='r' || sign=='R');
 

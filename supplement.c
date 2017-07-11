@@ -60,6 +60,8 @@ int CompareStrings(char *str1,char *str2)
 //Switch function
 void DoSelected(FILE *file,char option_number)
 {
+    CLEAR_SCREEN;
+    CURSOR_HOME;
     switch(option_number)
     {
         case '1':

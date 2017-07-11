@@ -16,6 +16,10 @@
 //Path to export-file
 #define EXPPATH "/home/orzelm/PROGRAMMING/PHONEBOOK/export-file.txt"
 
+//Terminal commands
+#define CLEAR_SCREEN    printf("\x1b[2J")
+#define CURSOR_HOME     printf("\x1b[;H")
+
 //Functions' prototypes
 void ShowEntrance(void);
 char ChooseOption(void);
