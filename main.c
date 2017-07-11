@@ -14,7 +14,7 @@
 int main(void)
 {
     FILE *phonebook;
-    int numb;
+    char sign;
     char option_number;
 
     if((phonebook=fopen(PHBPATH,"a+"))==NULL)
@@ -26,12 +26,13 @@ int main(void)
 
     do
     {
+        //Set file to beginning
+        fseek(phonebook,0,SEEK_SET);
         ShowEntrance();
         DoSelected(phonebook,ChooseOption());
-        printf("Press 1 to return to menu or other key to exit: ");
-        scanf("%i",&numb);
-        fseek(stdin,0,SEEK_END);
-    }while(numb==1);
+        printf("Press r/R to return to menu or other key to exit: ");
+        scanf(" %c",&sign);
+    }while(sign=='r' || sign=='R');
 
 
     //Checking system

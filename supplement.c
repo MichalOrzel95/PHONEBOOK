@@ -31,9 +31,9 @@ char ChooseOption(void)
     char number;
     do
     {
-        printf("Move to an option by entering a particular number[1-5]: ");
-        scanf("%c",&number);
         fseek(stdin,0,SEEK_END);
+        printf("Move to an option by entering a particular number[1-5]: ");
+        scanf(" %c",&number);
     }while(!(isdigit(number)) || (number=='0' || number>'5'));
 
     return number;
@@ -80,7 +80,7 @@ void DoSelected(FILE *file,char option_number)
         }break;
         case '5':
         {
-
+            ExportPerson(file); //Export a person from the phonebook
         }break;
         default:
         {

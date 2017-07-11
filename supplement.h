@@ -13,6 +13,8 @@
 #define TMPPATH "/home/orzelm/PROGRAMMING/PHONEBOOK/temp.txt"
 //Path to a new file(necessary to remove a person from phonebook)
 #define NEWPATH "/home/orzelm/PROGRAMMING/PHONEBOOK/newfile.txt"
+//Path to export-file
+#define EXPPATH "/home/orzelm/PROGRAMMING/PHONEBOOK/export-file.txt"
 
 //Functions' prototypes
 void ShowEntrance(void);

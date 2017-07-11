@@ -15,13 +15,12 @@ void ShowAll(FILE *file)
     char verse[80];
     printf("FORENAME,SURNAME,NUMBER\n");
     printf("******************************************\n");
-    //Set cursor to beginning
-    fseek(file,0,SEEK_SET);
     //Print out all the phonebook
     while((fgets(verse,80,file))!=NULL)
     {
         printf("%s",verse);
     }
+    printf("\n******************************************");
 }
 
 //Adding new person to phonebook
@@ -177,5 +176,31 @@ void SearchPhonebook(FILE *file)
             printf("Some error occured!\n");
         }break;
     }
+}
 
+//Exporting a person to another file
+void ExportPerson(FILE *file)
+{
+    char buffer[50];
+    char name[40];
+    printf("Enter forename,surname: ");
+    scanf("%s",name);
+
+    FILE *exportfile;
+
+    if((exportfile=fopen(EXPPATH,"a"))==NULL)
+    {
+        printf("Problem with creating export-file!\n");
+        exit(EXIT_FAILURE);
+    }
+
+    while((fgets(buffer,50,file))!=NULL)
+    {
+        if((strstr(buffer,name))!=NULL)
+        {
+            fprintf(exportfile,"%s",buffer);
+        }
+    }
+
+    fclose(exportfile);
 }
