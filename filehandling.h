@@ -8,5 +8,6 @@
 void ShowAll(FILE *file);
 void AddContact(FILE *file);
 void RemovePerson(FILE *file);
+void SearchPhonebook(FILE *file);
 
 #endif //PHONEBOOK_FILEHANDLING_H

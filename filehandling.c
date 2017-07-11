@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <string.h>
 #include "filehandling.h"
 #include "supplement.h"
 
@@ -14,6 +15,9 @@ void ShowAll(FILE *file)
     char verse[80];
     printf("FORENAME,SURNAME,NUMBER\n");
     printf("******************************************\n");
+    //Set cursor to beginning
+    fseek(file,0,SEEK_SET);
+    //Print out all the phonebook
     while((fgets(verse,80,file))!=NULL)
     {
         printf("%s",verse);
@@ -80,7 +84,98 @@ void RemovePerson(FILE *file)
         }
     }
 
-    rename("/home/orzelm/PROGRAMMING/PHONEBOOK/phonebook.txt","/home/orzelm/PROGRAMMING/PHONEBOOK/temp.txt");
-    rename("/home/orzelm/PROGRAMMING/PHONEBOOK/newfile.txt","/home/orzelm/PROGRAMMING/PHONEBOOK/phonebook.txt");
-    remove("/home/orzelm/PROGRAMMING/PHONEBOOK/temp.txt");
+    rename(PHBPATH,TMPPATH);
+    rename(NEWPATH,PHBPATH);
+    remove(TMPPATH);
+}
+
+//Searching for person in phonebook
+void SearchPhonebook(FILE *file)
+{
+    char buffer[50];    //Array storing line from phonebook
+    unsigned short option;
+
+    printf("Available options:\n");
+    printf("1-Searching by forename\n");
+    printf("2-Searching by surname\n");
+    printf("3-Searching by number\n");
+    printf("4-Searching by name(fore+sur-name)\n");
+
+    do
+    {
+        printf("Enter a number[1-4]: ");
+        scanf("%hi", &option);
+    }while((option<1 || option>4));
+
+    switch(option)
+    {
+        case 1:
+        {
+            char forename[25];
+            printf("Enter the forename: ");
+            scanf("%s",forename);
+            forename[strlen(forename)]=',';
+
+            while((fgets(buffer,50,file))!=NULL)
+            {
+                if((CompareStrings(forename,buffer))==0)
+                {
+                    printf("%s",buffer);
+                }
+            }
+
+        }break;
+        case 2:
+        {
+            char surname[25];
+            printf("Enter the surname: ");
+            scanf("%s",surname);
+
+            while((fgets(buffer,50,file))!=NULL)
+            {
+                if((strstr(buffer,surname))!=NULL)
+                {
+                    printf("%s",buffer);
+                }
+            }
+
+        }break;
+        case 3:
+        {
+            int pnumber;
+            char pnumb[10];
+            printf("Enter a number: ");
+            scanf("%i",&pnumber);
+            sprintf(pnumb,"%i",pnumber);
+
+            while((fgets(buffer,50,file))!=NULL)
+            {
+                if((strstr(buffer,pnumb))!=NULL)
+                {
+                    printf("%s",buffer);
+                }
+            }
+
+        }break;
+        case 4:
+        {
+            char name[40];
+            printf("Enter forename,surname: ");
+            scanf("%s",name);
+
+            while((fgets(buffer,50,file))!=NULL)
+            {
+                if((strstr(buffer,name))!=NULL)
+                {
+                    printf("%s",buffer);
+                }
+            }
+
+        }break;
+        default:
+        {
+            printf("Some error occured!\n");
+        }break;
+    }
+
 }

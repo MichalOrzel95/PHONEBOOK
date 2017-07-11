@@ -14,18 +14,25 @@
 int main(void)
 {
     FILE *phonebook;
+    int numb;
     char option_number;
 
-    ShowEntrance();
-    if((phonebook=fopen("/home/orzelm/PROGRAMMING/PHONEBOOK/phonebook.txt","a+"))==NULL)
+    if((phonebook=fopen(PHBPATH,"a+"))==NULL)
     {
-        printf("There was a problem with file!\n");
+        printf("Problem with opening phonebook!\n");
         printf("Closing program...");
         exit(EXIT_FAILURE);
     }
 
-    option_number=ChooseOption();
-    DoSelected(option_number,phonebook);
+    do
+    {
+        ShowEntrance();
+        DoSelected(phonebook,ChooseOption());
+        printf("Press 1 to return to menu or other key to exit: ");
+        scanf("%i",&numb);
+        fseek(stdin,0,SEEK_END);
+    }while(numb==1);
+
 
     //Checking system
     #if SYSTEM != LINUX

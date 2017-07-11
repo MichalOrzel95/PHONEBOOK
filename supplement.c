@@ -23,7 +23,7 @@ void ShowEntrance(void)
     printf("4.Search for someone\n");
     printf("5.Export someone to a new file\n");
     printf("******************************************\n");
-}
+} 
 
 //Choosing an option from menu
 char ChooseOption(void)
@@ -58,25 +58,25 @@ int CompareStrings(char *str1,char *str2)
 }
 
 //Switch function
-void DoSelected(char number,FILE *file)
+void DoSelected(FILE *file,char option_number)
 {
-    switch(number)
+    switch(option_number)
     {
         case '1':
         {
-            ShowAll(file);
+            ShowAll(file);  //Show phonebook
         }break;
         case '2':
         {
-            AddContact(file);
+            AddContact(file);   //Add to phonebook
         }break;
         case '3':
         {
-            RemovePerson(file);
+            RemovePerson(file); //Remove from phonebook
         }break;
         case '4':
         {
-
+            SearchPhonebook(file);  //Search for someone in phonebook
         }break;
         case '5':
         {
@@ -87,6 +87,6 @@ void DoSelected(char number,FILE *file)
 
         }break;
     }
-    printf("\nEND\n");
+    printf("\n\n");
 }
 
