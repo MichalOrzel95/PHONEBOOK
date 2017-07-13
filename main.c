@@ -8,6 +8,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 #include "supplement.h"
 #include "filehandling.h"
 
@@ -16,10 +17,21 @@ bool firstpassage;
 //Main function
 int main(void)
 {
-    FILE *phonebook;
+    FILE *phonebook,*logs;
     char sign;
     char option_number;
+    time_t time_now;
+    time(&time_now);
     firstpassage=true;
+
+    if((logs=fopen(LOGPATH,"a+"))==NULL)
+    {
+        printf("Problem with a log-file!\n");
+        printf("Closing program...");
+        exit(EXIT_FAILURE);
+    }
+
+    fprintf(logs,"%s",ctime(&time_now));
 
     do
     {
