@@ -4,10 +4,14 @@
 
 #include <stdio.h>
 #include <ctype.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
 #include "filehandling.h"
 #include "supplement.h"
+
+//Global variables
+extern bool firstpassage;
 
 //Showing all contacts in phonebook
 void ShowAll(FILE *file)
@@ -28,13 +32,13 @@ void AddContact(FILE *file)
 {
     char forename[30];
     char surname[30];
-    int phonemuber;
+    int phonenumber;
     char number;
 
     do
     {
         printf("Enter a number of people to wrote: ");
-        scanf("%c",&number);
+        scanf(" %c",&number);
         fseek(stdin,0,SEEK_END);
     }while(!(isdigit(number)) || number<0);
 
@@ -48,11 +52,18 @@ void AddContact(FILE *file)
         do
         {
             printf("Enter the phonenumber: ");
-            scanf("%i", &phonemuber);
+            scanf("%i", &phonenumber);
             fseek(stdin, 0, SEEK_END);
-        }while(phonemuber<100000000);
+        }while(phonenumber<100000000);
 
-        fprintf(file,"\n%s,%s,%i",forename,surname,phonemuber);
+        if(firstpassage==true)
+        {
+            fprintf(file,"%s,%s,%i",forename,surname,phonenumber);
+        }
+        else
+        {
+            fprintf(file,"\n%s,%s,%i",forename,surname,phonenumber);
+        }
     }
 }
 
@@ -60,11 +71,11 @@ void AddContact(FILE *file)
 void RemovePerson(FILE *file)
 {
     char buffer[50];
-    char person[50];
+    char person[40];
 
     FILE *newfile;
 
-    if((newfile=fopen("/home/orzelm/PROGRAMMING/PHONEBOOK/newfile.txt","a+"))==NULL)
+    if((newfile=fopen(NEWPATH,"a+"))==NULL)
     {
         printf("Problem with removing!\n");
         printf("Closing...");
@@ -77,7 +88,7 @@ void RemovePerson(FILE *file)
     //Searching for a person in the phonebook
     while((fgets(buffer,50,file))!=NULL)
     {
-        if((CompareStrings(person,buffer))!=0)
+        if((strstr(buffer,person))==NULL)
         {
             fprintf(newfile,"%s",buffer);
         }
@@ -86,6 +97,8 @@ void RemovePerson(FILE *file)
     rename(PHBPATH,TMPPATH);
     rename(NEWPATH,PHBPATH);
     remove(TMPPATH);
+
+    fclose(newfile);
 }
 
 //Searching for person in phonebook

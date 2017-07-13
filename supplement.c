@@ -90,5 +90,20 @@ void DoSelected(FILE *file,char option_number)
         }break;
     }
     printf("\n\n");
+
+    CloseFile(file);
+}
+
+//Closing the phonebook
+void CloseFile(FILE *file)
+{
+    //Checking system
+    #if SYSTEM != LINUX
+    //Wait untill user press a key
+    printf("\nPress any key to end: ");
+    getchar();
+    #endif
+    //Closing file
+    fclose(file);
 }
 

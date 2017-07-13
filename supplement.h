@@ -20,10 +20,12 @@
 #define CLEAR_SCREEN    printf("\x1b[2J")
 #define CURSOR_HOME     printf("\x1b[;H")
 
+
 //Functions' prototypes
 void ShowEntrance(void);
 char ChooseOption(void);
 void DoSelected(FILE *file,char option_number);
 int  CompareStrings(char *str1,char *str2);
+void CloseFile(FILE *file);
 
 #endif //HANDLING_FILES_SUPPLEMENT_H
