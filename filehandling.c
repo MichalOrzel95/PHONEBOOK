@@ -217,3 +217,17 @@ void ExportPerson(FILE *file)
 
     fclose(exportfile);
 }
+
+//Counting contacts in phonebook
+void CountContacts(FILE *file)
+{
+    char buffer[50];
+    unsigned int numberofcontacts=0;
+
+    while((fgets(buffer,50,file))!=NULL)
+    {
+        numberofcontacts++;
+    }
+
+    printf("Found %u contacts\n",numberofcontacts);
+}

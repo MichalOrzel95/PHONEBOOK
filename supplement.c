@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include <stdlib.h>
 #include "supplement.h"
 #include "filehandling.h"
 
@@ -22,6 +23,7 @@ void ShowEntrance(void)
     printf("3.Delete someone from the phonebook\n");
     printf("4.Search for someone\n");
     printf("5.Export someone to a new file\n");
+    printf("6.Number of contacts in phonebook\n");
     printf("******************************************\n");
 } 
 
@@ -32,9 +34,11 @@ char ChooseOption(void)
     do
     {
         fseek(stdin,0,SEEK_END);
-        printf("Move to an option by entering a particular number[1-5]: ");
+        printf("Choose an option[1-6] or [e/E] to exit: ");
         scanf(" %c",&number);
-    }while(!(isdigit(number)) || (number=='0' || number>'5'));
+        if(number=='e' || number=='E')
+            exit(EXIT_FAILURE);
+    }while(!(isdigit(number)) || (number=='0' || number>'6'));
 
     return number;
 }
@@ -83,6 +87,10 @@ void DoSelected(FILE *file,char option_number)
         case '5':
         {
             ExportPerson(file); //Export a person from the phonebook
+        }break;
+        case '6':
+        {
+            CountContacts(file);    //Count contacts in phonebook
         }break;
         default:
         {
