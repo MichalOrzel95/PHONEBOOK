@@ -5,14 +5,12 @@ all: $(TARGET_NAME)
 $(TARGET_NAME): $(OBJ_FILES)
 	$(CC) $? -o $@
 
-main.o: main.c
-	$(CC) -c $? -o $@
+%.o: %.c
+	$(CC) -c $? -I$(INC_DIR) -o $@
 
-supplement.o: supplement.c
-	$(CC) -c $? -o $@
-
-filehandling.o: filehandling.c
-	$(CC) -c $? -o $@
+check:
+	@echo $(SRC_FILES)
+	@echo $(OBJ_FILES)
 
 .PHONY: clean
 clean:

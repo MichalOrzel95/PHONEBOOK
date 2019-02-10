@@ -1,3 +1,7 @@
-# PHONEBOOK
-Phonebook made in C using files-handling
-Platform: Multiplatform
+AUTHOR: Michal Orzel <orzelmichal95@gmail.com>
+PROJECT: PHONEBOOK
+LANGUAGE: C
+BUILD SYSTEM: make
+PLATFORM: multiplatform
+INFO:
+Simple project for managing phonebook contacts.

@@ -1,6 +1,7 @@
 CC = gcc
 CFLAGS = -Wall
 TARGET_NAME = phonebook.exe
-OBJ_FILES = main.o filehandling.o supplement.o
-PD = /
-VPATH = src:inc
+SRC_FILES = $(wildcard src/*.c)
+OBJ_FILES = $(SRC_FILES:.c=.o)
+INC_DIR = inc
+vpath %.c src
