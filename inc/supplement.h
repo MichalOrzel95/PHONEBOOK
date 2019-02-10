@@ -6,15 +6,17 @@
 #define HANDLING_FILES_SUPPLEMENT_H
 
 //Kind of system
-#define SYSTEM LINUX
+#define SYSTEM WINDOWS
 //Path to the phonebook
-#define PHBPATH "/home/orzelm/PROGRAMMING/PHONEBOOK/phonebook.txt"
+#define PHBPATH "phonebook.txt"
 //Path to temp file(necessary to remove a person from phonebook)
-#define TMPPATH "/home/orzelm/PROGRAMMING/PHONEBOOK/temp.txt"
+#define TMPPATH "temp.txt"
 //Path to a new file(necessary to remove a person from phonebook)
-#define NEWPATH "/home/orzelm/PROGRAMMING/PHONEBOOK/newfile.txt"
+#define NEWPATH "newfile.txt"
 //Path to export-file
-#define EXPPATH "/home/orzelm/PROGRAMMING/PHONEBOOK/export-file.txt"
+#define EXPPATH "export-file.txt"
+//Path to log-file
+#define LOGPATH "log.txt"
 
 //Terminal commands
 #define CLEAR_SCREEN    printf("\x1b[2J")
