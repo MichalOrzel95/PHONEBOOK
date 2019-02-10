@@ -43,7 +43,6 @@ int main(void)
         }
 
         CLEAR_SCREEN;
-        CURSOR_HOME;
 
         //Set file to beginning
         fseek(phonebook,0,SEEK_SET);
@@ -57,5 +56,3 @@ int main(void)
 
     return 0;
 }//End of main
-
-

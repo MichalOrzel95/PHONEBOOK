@@ -25,7 +25,7 @@ void ShowEntrance(void)
     printf("5.Export someone to a new file\n");
     printf("6.Number of contacts in phonebook\n");
     printf("******************************************\n");
-} 
+}
 
 //Choosing an option from menu
 char ChooseOption(void)
@@ -65,7 +65,6 @@ int CompareStrings(char *str1,char *str2)
 void DoSelected(FILE *file,char option_number)
 {
     CLEAR_SCREEN;
-    CURSOR_HOME;
     switch(option_number)
     {
         case '1':
@@ -114,4 +113,3 @@ void CloseFile(FILE *file)
     //Closing file
     fclose(file);
 }
-

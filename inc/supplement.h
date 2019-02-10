@@ -6,6 +6,7 @@
 #define HANDLING_FILES_SUPPLEMENT_H
 
 //Kind of system
+// LINUX | WINDOWS
 #define SYSTEM WINDOWS
 //Path to the phonebook
 #define PHBPATH "phonebook.txt"
@@ -19,9 +20,13 @@
 #define LOGPATH "log.txt"
 
 //Terminal commands
-#define CLEAR_SCREEN    printf("\x1b[2J")
-#define CURSOR_HOME     printf("\x1b[;H")
+#if SYSTEM == LINUX
+#define CLEAR_SCREEN    system("clear")
+#endif
 
+#if SYSTEM == WINDOWS
+#define CLEAR_SCREEN    system("cls")
+#endif
 
 //Functions' prototypes
 void ShowEntrance(void);
